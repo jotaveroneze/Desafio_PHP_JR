@@ -3,14 +3,12 @@
 
         <div class="modal-header">
             <h2>Novo paciente</h2>
-
             <button
                 type="button"
                 class="btn-close"
                 data-close="addPatientModal"
-            >
-                ×
-            </button>
+                aria-label="Fechar"
+            ></button>
         </div>
 
         <form id="addPatientForm">
@@ -56,6 +54,7 @@
                 <input
                     type="text"
                     id="addPhone"
+                    maxlength="15"
                 >
             </div>
 
@@ -77,7 +76,7 @@
             <div class="modal-actions">
                 <button
                     type="button"
-                    class="btn-secondary"
+                    class="btn btn-secondary"
                     data-close="addPatientModal"
                 >
                     Cancelar
@@ -85,7 +84,7 @@
 
                 <button
                     type="submit"
-                    class="btn-primary"
+                    class="btn btn-primary"
                 >
                     Salvar
                 </button>

@@ -10,9 +10,8 @@
                 type="button"
                 class="btn-close"
                 data-close="messageModal"
-            >
-                ×
-            </button>
+                aria-label="Fechar"
+            ></button>
         </div>
 
         <div
@@ -20,16 +19,6 @@
             id="messageBox"
         >
             <p id="modalMessage"></p>
-        </div>
-
-        <div class="modal-actions">
-            <button
-                type="button"
-                class="btn-secondary"
-                data-close="messageModal"
-            >
-                Fechar
-            </button>
         </div>
 
     </div>

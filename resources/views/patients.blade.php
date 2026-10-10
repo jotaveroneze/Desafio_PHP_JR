@@ -7,6 +7,10 @@
     <title>Pacientes</title>
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+    rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -21,10 +25,11 @@
 
             <button
                 type="button"
-                class="btn-primary"
+                class="btn btn-primary"
                 id="btnNovoPaciente"
             >
-                + Novo paciente
+                <i class="bi bi-plus-lg"></i>
+                Novo paciente
             </button>
         </header>
 
@@ -37,8 +42,12 @@
                     placeholder="Pesquisar paciente pelo nome..."
                 >
 
-                <button type="button" id="btnBuscar">
-                    Buscar
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="btnBuscar"
+                >
+                    <i class="bi bi-search"></i>
                 </button>
             </div>
 

@@ -4,14 +4,12 @@
 
         <div class="modal-header">
             <h2>Editar paciente</h2>
-
             <button
                 type="button"
                 class="btn-close"
                 data-close="editPatientModal"
-            >
-                ×
-            </button>
+                aria-label="Fechar"
+            ></button>
         </div>
 
         <form id="editPatientForm">
@@ -83,7 +81,7 @@
             <div class="modal-actions">
                 <button
                     type="button"
-                    class="btn-secondary"
+                    class="btn btn-secondary"
                     data-close="editPatientModal"
                 >
                     Cancelar
@@ -91,7 +89,7 @@
 
                 <button
                     type="submit"
-                    class="btn-primary"
+                    class="btn btn-primary"
                 >
                     Salvar alterações
                 </button>

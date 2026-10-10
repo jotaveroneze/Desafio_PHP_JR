@@ -18,6 +18,8 @@ const messageBox = document.getElementById('messageBox');
 
 const addPhone = document.getElementById('addPhone');
 const editPhone = document.getElementById('editPhone');
+const addCpf = document.getElementById('addCpf');
+const editCpf = document.getElementById('editCpf');
 
 
 window.abrirModal = function (modal) {
@@ -106,24 +108,14 @@ document.querySelectorAll('[data-close]').forEach((button) => {
 });
 
 
-document.querySelectorAll('.modal').forEach((modal) => {
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            fecharModal(modal);
+if (messageModal) {
+    messageModal.addEventListener('click', (event) => {
+        if (event.target === messageModal) {
+            fecharModal(messageModal);
         }
     });
-});
+}
 
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        document
-            .querySelectorAll('.modal.show')
-            .forEach((modal) => {
-                fecharModal(modal);
-            });
-    }
-});
 
 
 async function carregarUnidades() {
@@ -291,7 +283,7 @@ if (tabelaPacientesModal) {
                 data.name;
 
             document.getElementById('editCpf').value =
-                data.cpf;
+                aplicarMascaraCpf(data.cpf);
 
             document.getElementById('editBirthDate').value =
                 data.birth_date.substring(0, 10);
@@ -471,6 +463,18 @@ if (editPhone) {
         editPhone.value = aplicarMascaraTelefone(
             editPhone.value
         );
+    });
+}
+
+if (addCpf) {
+    addCpf.addEventListener('input', () => {
+        addCpf.value = aplicarMascaraCpf(addCpf.value);
+    });
+}
+
+if (editCpf) {
+    editCpf.addEventListener('input', () => {
+        editCpf.value = aplicarMascaraCpf(editCpf.value);
     });
 }
 

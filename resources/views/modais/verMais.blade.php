@@ -9,9 +9,8 @@
                 type="button"
                 class="btn-close"
                 data-close="detailsPatientModal"
-            >
-                ×
-            </button>
+                aria-label="Fechar"
+            ></button>
         </div>
 
         <div class="patient-details">
@@ -41,16 +40,6 @@
                 <span id="detailHealthUnit"></span>
             </p>
 
-        </div>
-
-        <div class="modal-actions">
-            <button
-                type="button"
-                class="btn-secondary"
-                data-close="detailsPatientModal"
-            >
-                Fechar
-            </button>
         </div>
 
     </div>

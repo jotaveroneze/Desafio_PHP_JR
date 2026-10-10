@@ -1,12 +1,5 @@
 :root {
     --primary: #4f8df7;
-    --primary-hover: #3b7be0;
-
-    --danger: #f87171;
-    --danger-hover: #ef5f5f;
-
-    --warning: #f5c15c;
-    --warning-hover: #edb747;
 
     --bg: #f5f7fa;
     --card: #ffffff;
@@ -74,50 +67,6 @@ input:focus,
 select:focus {
     outline: none;
     border-color: var(--primary);
-}
-
-button {
-    border: 0;
-    border-radius: 6px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font: inherit;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-}
-
-.btn-secondary {
-    background: #e5e7eb;
-    color: var(--text);
-}
-
-.btn-secondary:hover {
-    background: #d8dce2;
-}
-
-.btn-edit {
-    background: var(--warning);
-    color: #5a4300;
-}
-
-.btn-edit:hover {
-    background: var(--warning-hover);
-}
-
-.btn-delete {
-    background: var(--danger);
-    color: white;
-}
-
-.btn-delete:hover {
-    background: var(--danger-hover);
 }
 
 .search-area button {
@@ -188,12 +137,6 @@ tbody tr:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.btn-close {
-    background: transparent;
-    font-size: 24px;
-    padding: 5px;
 }
 
 .form-group {

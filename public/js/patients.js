@@ -70,18 +70,20 @@ async function carregarPacientes(
                 <td class="actions">
                     <button
                         type="button"
-                        class="btn-edit"
+                        class="btn btn-sm btn-outline-primary btn-edit"
                         data-patient-id="${patient.id}"
+                        title="Editar paciente"
                     >
-                        Editar
+                        <i class="bi bi-pencil"></i>
                     </button>
 
                     <button
                         type="button"
-                        class="btn-delete"
+                        class="btn btn-sm btn-outline-danger btn-delete"
                         data-patient-id="${patient.id}"
+                        title="Excluir paciente"
                     >
-                        Excluir
+                        <i class="bi bi-trash"></i>
                     </button>
                 </td>
             `;
