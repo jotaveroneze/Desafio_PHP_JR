@@ -57,48 +57,7 @@
                     </thead>
 
                     <tbody id="patientsTable">
-
-                        <tr>
-                            <td>
-                                <button
-                                    type="button"
-                                    class="patient-link"
-                                    data-patient-id="1"
-                                    data-name="Maria Silva"
-                                    data-cpf="123.456.789-01"
-                                    data-birth-date="1995-04-10"
-                                    data-phone="(19) 99999-9999"
-                                    data-health-unit="UBS Centro"
-                                >
-                                    Maria Silva
-                                </button>
-                            </td>
-
-                            <td>123.456.789-01</td>
-
-                            <td>UBS Centro</td>
-
-                            <td class="actions">
-
-                                <button
-                                    type="button"
-                                    class="btn-edit"
-                                    data-patient-id="1"
-                                >
-                                    Editar
-                                </button>
-
-                                <button
-                                    type="button"
-                                    class="btn-delete"
-                                    data-patient-id="1"
-                                >
-                                    Excluir
-                                </button>
-
-                            </td>
-                        </tr>
-
+                        
                     </tbody>
                 </table>
 
