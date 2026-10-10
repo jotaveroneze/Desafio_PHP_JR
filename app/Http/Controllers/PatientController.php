@@ -13,12 +13,16 @@ class PatientController extends Controller
         $query = Patient::with('healthUnit');
 
         if ($request->filled('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+            $query->where(
+                'name',
+                'like',
+                '%' . $request->search . '%'
+            );
         }
 
         $patients = $query
             ->orderBy('name')
-            ->get();
+            ->paginate(5);
 
         return response()->json($patients);
     }
@@ -137,6 +141,7 @@ class PatientController extends Controller
     $patient->load('healthUnit');
 
     return response()->json($patient);
+
 }
 
     public function destroy(string $id)

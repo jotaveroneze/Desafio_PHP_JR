@@ -16,6 +16,9 @@ const messageTitle = document.getElementById('messageTitle');
 const modalMessage = document.getElementById('modalMessage');
 const messageBox = document.getElementById('messageBox');
 
+const addPhone = document.getElementById('addPhone');
+const editPhone = document.getElementById('editPhone');
+
 
 window.abrirModal = function (modal) {
     if (!modal) {
@@ -294,7 +297,9 @@ if (tabelaPacientesModal) {
                 data.birth_date.substring(0, 10);
 
             document.getElementById('editPhone').value =
-                data.phone || '';
+                data.phone
+                    ? aplicarMascaraTelefone(data.phone)
+                    : '';
 
             document.getElementById('editHealthUnit').value =
                 data.health_unit_id;
@@ -433,7 +438,9 @@ if (tabelaPacientesModal) {
                 formatarData(data.birth_date);
 
             document.getElementById('detailPhone').textContent =
-                data.phone || 'Não informado';
+                data.phone
+                    ? aplicarMascaraTelefone(data.phone)
+                    : 'Não informado';
 
             document.getElementById('detailHealthUnit').textContent =
                 data.health_unit?.name || 'Não informado';
@@ -448,6 +455,22 @@ if (tabelaPacientesModal) {
                 'erro'
             );
         }
+    });
+}
+
+if (addPhone) {
+    addPhone.addEventListener('input', () => {
+        addPhone.value = aplicarMascaraTelefone(
+            addPhone.value
+        );
+    });
+}
+
+if (editPhone) {
+    editPhone.addEventListener('input', () => {
+        editPhone.value = aplicarMascaraTelefone(
+            editPhone.value
+        );
     });
 }
 

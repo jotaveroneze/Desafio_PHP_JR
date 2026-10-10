@@ -45,7 +45,6 @@
             <div id="message"></div>
 
             <div class="table-wrapper">
-
                 <table>
                     <thead>
                         <tr>
@@ -56,12 +55,14 @@
                         </tr>
                     </thead>
 
-                    <tbody id="patientsTable">
-
-                    </tbody>
+                    <tbody id="patientsTable"></tbody>
                 </table>
-
             </div>
+
+            <div
+                class="pagination"
+                id="pagination"
+            ></div>
 
         </section>
 

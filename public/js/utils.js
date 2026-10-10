@@ -28,3 +28,19 @@ window.mostrarMensagem = function (texto, erro = false) {
         message.className = '';
     }, 4000);
 };
+
+window.aplicarMascaraTelefone = function (valor) {
+    valor = valor.replace(/\D/g, '');
+
+    if (valor.length <= 10) {
+        return valor.replace(
+            /(\d{2})(\d{4})(\d{0,4})/,
+            '($1) $2-$3'
+        );
+    }
+
+    return valor.replace(
+        /(\d{2})(\d{5})(\d{0,4})/,
+        '($1) $2-$3'
+    );
+};

@@ -3,24 +3,35 @@ const patientsTable = document.getElementById('patientsTable');
 const searchInput = document.getElementById('search');
 const btnBuscar = document.getElementById('btnBuscar');
 
+const pagination =
+    document.getElementById('pagination');
 
-async function carregarPacientes(search = '') {
+
+async function carregarPacientes(
+    search = '',
+    page = 1
+) {
     try {
-        let url = '/api/patients';
+        let url = `/api/patients?page=${page}`;
 
         if (search) {
-            url += `?search=${encodeURIComponent(search)}`;
+            url += `&search=${encodeURIComponent(search)}`;
         }
 
         const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error('Erro ao carregar pacientes.');
+            throw new Error(
+                'Erro ao carregar pacientes.'
+            );
         }
 
-        const patients = await response.json();
+        const result = await response.json();
+
+        const patients = result.data;
 
         patientsTable.innerHTML = '';
+        pagination.innerHTML = '';
 
         if (patients.length === 0) {
             patientsTable.innerHTML = `
@@ -78,6 +89,11 @@ async function carregarPacientes(search = '') {
             patientsTable.appendChild(row);
         });
 
+        criarPaginacao(
+            result.current_page,
+            result.last_page
+        );
+
     } catch (error) {
         console.error(error);
 
@@ -88,6 +104,72 @@ async function carregarPacientes(search = '') {
     }
 }
 
+function criarPaginacao(
+    paginaAtual,
+    ultimaPagina
+) {
+    pagination.innerHTML = '';
+
+    if (ultimaPagina <= 1) {
+        return;
+    }
+
+    if (paginaAtual > 1) {
+        const anterior =
+            document.createElement('button');
+
+        anterior.textContent = 'Anterior';
+
+        anterior.addEventListener('click', () => {
+            carregarPacientes(
+                searchInput.value.trim(),
+                paginaAtual - 1
+            );
+        });
+
+        pagination.appendChild(anterior);
+    }
+
+    for (
+        let pagina = 1;
+        pagina <= ultimaPagina;
+        pagina++
+    ) {
+        const botao =
+            document.createElement('button');
+
+        botao.textContent = pagina;
+
+        if (pagina === paginaAtual) {
+            botao.classList.add('active');
+        }
+
+        botao.addEventListener('click', () => {
+            carregarPacientes(
+                searchInput.value.trim(),
+                pagina
+            );
+        });
+
+        pagination.appendChild(botao);
+    }
+
+    if (paginaAtual < ultimaPagina) {
+        const proxima =
+            document.createElement('button');
+
+        proxima.textContent = 'Próxima';
+
+        proxima.addEventListener('click', () => {
+            carregarPacientes(
+                searchInput.value.trim(),
+                paginaAtual + 1
+            );
+        });
+
+        pagination.appendChild(proxima);
+    }
+}
 
 function buscarPacientes() {
     const search = searchInput.value.trim();
