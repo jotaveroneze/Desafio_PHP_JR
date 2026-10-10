@@ -57,7 +57,7 @@
                     </thead>
 
                     <tbody id="patientsTable">
-                        
+
                     </tbody>
                 </table>
 
@@ -70,8 +70,11 @@
     @include('modais.adicionarPaciente')
     @include('modais.editarPaciente')
     @include('modais.verMais')
+    @include('modais.mensagem')
 
-    <script src="{{ asset('js/patients.js') }}"></script>
+<script src="{{ asset('js/utils.js') }}"></script>
+<script src="{{ asset('js/modais/modais.js') }}"></script>
+<script src="{{ asset('js/patients.js') }}"></script>
 
 </body>
 </html>

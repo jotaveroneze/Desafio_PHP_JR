@@ -25,13 +25,34 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'digits:11', 'unique:patients,cpf'],
-            'birth_date' => ['required', 'date', 'before_or_equal:today'],
-            'phone' => ['nullable', 'string', 'max:20'],
-            'health_unit_id' => ['required', 'exists:health_units,id'],
-        ]);
+        $validated = $request->validate(
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'cpf' => ['required', 'digits:11', 'unique:patients,cpf'],
+                'birth_date' => ['required', 'date', 'before_or_equal:today'],
+                'phone' => ['nullable', 'string', 'max:20'],
+                'health_unit_id' => ['required', 'exists:health_units,id'],
+            ],
+            [
+                'name.required' => 'O nome é obrigatório.',
+                'name.string' => 'O nome informado é inválido.',
+                'name.max' => 'O nome deve ter no máximo 255 caracteres.',
+
+                'cpf.required' => 'O CPF é obrigatório.',
+                'cpf.digits' => 'O CPF deve conter exatamente 11 números.',
+                'cpf.unique' => 'Este CPF já está cadastrado.',
+
+                'birth_date.required' => 'A data de nascimento é obrigatória.',
+                'birth_date.date' => 'A data de nascimento é inválida.',
+                'birth_date.before_or_equal' => 'A data de nascimento não pode ser futura.',
+
+                'phone.string' => 'O telefone informado é inválido.',
+                'phone.max' => 'O telefone deve ter no máximo 20 caracteres.',
+
+                'health_unit_id.required' => 'A unidade de saúde é obrigatória.',
+                'health_unit_id.exists' => 'A unidade de saúde selecionada não existe.',
+            ]
+        );
 
         $patient = Patient::create($validated);
 
@@ -54,16 +75,17 @@ class PatientController extends Controller
     }
 
     public function update(Request $request, string $id)
-    {
-        $patient = Patient::find($id);
+{
+    $patient = Patient::find($id);
 
-        if (!$patient) {
-            return response()->json([
-                'message' => 'Paciente não encontrado.'
-            ], 404);
-        }
+    if (!$patient) {
+        return response()->json([
+            'message' => 'Paciente não encontrado.'
+        ], 404);
+    }
 
-        $validated = $request->validate([
+    $validated = $request->validate(
+        [
             'name' => ['required', 'string', 'max:255'],
 
             'cpf' => [
@@ -88,14 +110,34 @@ class PatientController extends Controller
                 'required',
                 'exists:health_units,id',
             ],
-        ]);
+        ],
+        [
+            'name.required' => 'O nome é obrigatório.',
+            'name.string' => 'O nome informado é inválido.',
+            'name.max' => 'O nome deve ter no máximo 255 caracteres.',
 
-        $patient->update($validated);
+            'cpf.required' => 'O CPF é obrigatório.',
+            'cpf.digits' => 'O CPF deve conter exatamente 11 números.',
+            'cpf.unique' => 'Este CPF já está cadastrado.',
 
-        $patient->load('healthUnit');
+            'birth_date.required' => 'A data de nascimento é obrigatória.',
+            'birth_date.date' => 'A data de nascimento é inválida.',
+            'birth_date.before_or_equal' => 'A data de nascimento não pode ser futura.',
 
-        return response()->json($patient);
-    }
+            'phone.string' => 'O telefone informado é inválido.',
+            'phone.max' => 'O telefone deve ter no máximo 20 caracteres.',
+
+            'health_unit_id.required' => 'A unidade de saúde é obrigatória.',
+            'health_unit_id.exists' => 'A unidade de saúde selecionada não existe.',
+        ]
+    );
+
+    $patient->update($validated);
+
+    $patient->load('healthUnit');
+
+    return response()->json($patient);
+}
 
     public function destroy(string $id)
     {

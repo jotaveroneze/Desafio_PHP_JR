@@ -69,19 +69,7 @@
                     required
                 >
                     <option value="">
-                        Selecione uma unidade
-                    </option>
-
-                    <option value="1">
-                        UBS Centro
-                    </option>
-
-                    <option value="2">
-                        UBS Vila Rezende
-                    </option>
-
-                    <option value="3">
-                        UBS Paulista
+                        Carregando unidades...
                     </option>
                 </select>
             </div>
