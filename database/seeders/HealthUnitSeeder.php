@@ -10,22 +10,34 @@ class HealthUnitSeeder extends Seeder
 {
     public function run(): void
     {
-        HealthUnit::create([
-            'uuid' => Str::uuid(),
-            'name' => 'UBS Centro',
-            'city' => 'Piracicaba',
-        ]);
+        HealthUnit::firstOrCreate(
+            [
+                'name' => 'UBS Centro',
+                'city' => 'Piracicaba',
+            ],
+            [
+                'uuid' => Str::uuid(),
+            ]
+        );
 
-        HealthUnit::create([
-            'uuid' => Str::uuid(),
-            'name' => 'UBS Vila Rezende',
-            'city' => 'Piracicaba',
-        ]);
+        HealthUnit::firstOrCreate(
+            [
+                'name' => 'UBS Vila Rezende',
+                'city' => 'Piracicaba',
+            ],
+            [
+                'uuid' => Str::uuid(),
+            ]
+        );
 
-        HealthUnit::create([
-            'uuid' => Str::uuid(),
-            'name' => 'UBS Paulista',
-            'city' => 'Piracicaba',
-        ]);
+        HealthUnit::firstOrCreate(
+            [
+                'name' => 'UBS Paulista',
+                'city' => 'Piracicaba',
+            ],
+            [
+                'uuid' => Str::uuid(),
+            ]
+        );
     }
 }
