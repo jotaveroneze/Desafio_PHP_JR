@@ -10,6 +10,7 @@ Aplicação web desenvolvida em Laravel para cadastro, consulta, edição e excl
 - HTML
 - CSS
 - JavaScript
+- Bootstrap 5
 - Fetch API
 - Git
 - GitHub
@@ -174,7 +175,7 @@ Abra esse endereço no navegador.
 
 A página principal do sistema será carregada e permitirá utilizar as funcionalidades de cadastro, consulta, edição e exclusão de pacientes.
 
-O frontend utiliza HTML, CSS e JavaScript puro, portanto não é necessário executar `npm install` ou realizar build do frontend.
+O frontend utiliza HTML, CSS, JavaScript puro e Bootstrap 5. O Bootstrap é carregado via CDN, portanto não é necessário executar `npm install` ou realizar build do frontend.
 
 ## API
 
@@ -207,24 +208,6 @@ GET /api/patients?search=Carlos
 ```
 
 A busca é parcial, permitindo localizar pacientes cujo nome contenha o termo informado.
-
-### Cadastro
-
-```http
-POST /api/patients
-```
-
-Exemplo de dados enviados:
-
-```json
-{
-    "name": "Paciente Teste",
-    "cpf": "12345678901",
-    "birth_date": "2000-01-01",
-    "phone": "19999999999",
-    "health_unit_id": 1
-}
-```
 
 ## Validações
 
@@ -319,35 +302,6 @@ Além dos requisitos obrigatórios, o projeto possui:
 - JavaScript separado por responsabilidade
 - Teste automatizado da API
 - Commits organizados por etapas de desenvolvimento
-
-## Estrutura principal
-
-```text
-app/
-├── Http/Controllers/
-├── Models/
-
-database/
-├── migrations/
-├── seeders/
-
-public/
-├── css/
-├── js/
-
-resources/
-├── views/
-
-routes/
-├── api.php
-├── web.php
-
-sql/
-├── consultas.sql
-
-tests/
-├── Feature/
-```
 
 ## Observações
 
